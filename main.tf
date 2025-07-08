@@ -5,12 +5,12 @@ resource "aws_vpc" "network" {
   }
 }
 
-resource "aws_subnet" "subnets" {
-  count = length(var.subnet_cidrs)
+resource "aws_subnet" "subnet_overall_details" {
+  count             = length(var.subnet_overall_details)
   vpc_id            = aws_vpc.network.id
-  cidr_block        = var.subnet_cidrs[count.index]
-  availability_zone = var.subnet_azs[count.index]
+  cidr_block        = var.subnet_overall_details[count.index].cidr
+  availability_zone = var.subnet_overall_details[count.index].az
   tags = {
-    Name = var.subnet_name[count.index]
+    Name = var.subnet_overall_details[count.index].name
   }
 }
