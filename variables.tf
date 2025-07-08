@@ -31,3 +31,9 @@ variable "subnet_azs" {
   ]
   description = "List of availability zones for subnets"
 }
+
+variable "subnet_name" {
+  type        = list(string)
+  default     = ["web-1", "web-2", "db-1", "db-2"]
+  description = "List of tag names for subnets"
+}
